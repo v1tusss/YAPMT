@@ -1,0 +1,10 @@
+// Symbol table
+// Scope level 0:
+//	Symbol Name       Page Address
+//	----------------  ------------
+//	LOOP              3000
+//	LOOP_READ         3004
+//	LOOP_PRINT        300B
+//	INPUT             300E
+//	BUFF              3019
+

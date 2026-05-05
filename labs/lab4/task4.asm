@@ -1,0 +1,88 @@
+.ORIG x3000
+
+LD 	R2, INIT
+LEA 	R1, NUMBERS
+
+LOOP_READ
+
+	ADD 	R2, R2, #1
+	LEA	R0, STRING
+	PUTS
+	GETC	
+	OUT
+
+	ADD 	R3, R0, #0
+	LD 	R4, NEG48 
+	ADD 	R3, R3, R4
+	STR 	R3, R1, #0
+	ADD 	R1, R1, #1
+
+	LEA 	R0, NEWLINE
+	PUTS
+
+	ADD 	R3, R2, #-5
+	BRz 	SORT
+	BRnzp 	LOOP_READ
+
+SORT
+	LD 	R6, COUNT
+	ADD 	R4, R6, #0
+
+OUTLOOP
+
+	ADD 	R4, R4, #-1
+	BRz 	OUTPUT_LOOP
+	LEA 	R3, NUMBERS
+	ADD 	R5, R4, #0 
+
+INLOOP
+
+	LDR 	R0, R3, #0
+	LDR 	R1, R3, #1
+	NOT 	R2, R1
+	ADD 	R2, R2, #1
+	ADD 	R2, R0, R2
+	BRN 	SWAP
+	SKIP_SWAP
+	ADD 	R3, R3, #1
+	ADD 	R5, R5, #-1
+	BRp 	INLOOP
+	BRnzp 	OUTLOOP
+
+SWAP
+
+	STR 	R1, R3, #0 
+	STR 	R0, R3, #1
+	BRnzp 	SKIP_SWAP
+
+OUTPUT_LOOP
+
+	LEA 	R1, NUMBERS
+	LD 	R2, INIT
+
+LOOP_PRINT
+
+	LDR 	R0, R1, #0
+	LD 	R4, POS48
+	ADD 	R0, R0, R4
+	OUT              
+	LEA 	R0, NEWLINE
+	PUTS                 
+	ADD 	R1, R1, #1  
+	ADD 	R2, R2, #1
+	ADD 	R3, R2, #-5
+	BRz 	END
+	BRnzp 	LOOP_PRINT
+
+END
+HALT
+
+INIT .FILL #0
+STRING .STRINGZ "Enter a number: "
+NEWLINE .STRINGZ "\n"
+POS48 .FILL #48
+NEG48 .FILL #-48
+NUMBERS .BLKW #5
+COUNT .FILL #5
+
+.END

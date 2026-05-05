@@ -1,0 +1,16 @@
+// Symbol table
+// Scope level 0:
+//	Symbol Name       Page Address
+//	----------------  ------------
+//	LOOP_READ         3004
+//	LOOP_SORT         3011
+//	INLOOP            3014
+//	LOOP_SWAP         301C
+//	LOOP_PRINT        3025
+//	STRING            302D
+//	NUMBERS           303F
+//	COUNT             3044
+//	NEG48             3045
+//	POS48             3046
+//	NEWLINE           3047
+
